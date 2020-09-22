@@ -44,13 +44,15 @@ namespace CarSimulator
             {
                 double rho = 1.225;
 
-                fd = 0.5 * rho * drag_area * v * v; // Math.Pow(v, 2.0)
+                fd = 0.5 * rho * drag_area * Math.Pow(v, 2.0);
 
                 double net_force = engine_force - fd;
 
                 a = CarSimulator.Physics1D.compute_acceleration(net_force, mass);
 
                 v = CarSimulator.Physics1D.compute_velocity(v, a, dt);
+
+                //fd = 0.5 * rho * drag_area * Math.Pow(v, 2.0);
 
                 x1 = CarSimulator.Physics1D.compute_position(x0, v, dt);
 
