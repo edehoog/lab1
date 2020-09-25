@@ -37,28 +37,33 @@ namespace CarSimulator
             double v = 0;  // initial velocity
             double t = 0;  // initial time
             double fd, x1, a; // drag force and secondary position and acceleration
+            double rho = 1.225; // air density
+            double net_force; // net force
 
 
             // run the simulation
             for (int i = 0; i < N; ++i)
             {
-                double rho = 1.225;
-
+                // calculate drag force
                 fd = 0.5 * rho * drag_area * Math.Pow(v, 2.0);
 
-                double net_force = engine_force - fd;
+                // calculate net force of the engine minus the drag force
+                net_force = engine_force - fd;
 
+                // calculate acceleration 
                 a = CarSimulator.Physics1D.compute_acceleration(net_force, mass);
-
+                
+                // calculate velocity
                 v = CarSimulator.Physics1D.compute_velocity(v, a, dt);
 
-                //fd = 0.5 * rho * drag_area * Math.Pow(v, 2.0);
-
+                // calculate position
                 x1 = CarSimulator.Physics1D.compute_position(x0, v, dt);
 
+                // set initial position for the next iteration
                 x0 = x1;
 
-                t += dt;  // increment time
+                // increment time
+                t += dt;  
 
                 // print the time and current state
                 Console.WriteLine("t:{0}, a:{1}, v:{2}, x1:{3}, fd:{4} ", t, a, v, x1, fd);

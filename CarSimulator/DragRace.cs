@@ -8,9 +8,10 @@ namespace CarSimulator
         static void Main(string[] args)
         {
 
-            Car myTesla = new Car("Tesla", 1500, 1000, 0.51);
+            Car myTesla = new Car("Tesla", 1500, 1000, 0.51); 
             Car myPrius = new Car("Prius", 1000, 750, 0.43);
 
+            //be careful with this, make sure only the necessary ones are global
             double finishTimePrius = 0;
             double finishTimeTesla = 0;
 
@@ -24,8 +25,8 @@ namespace CarSimulator
 
             for (double t = 0; t < 60; t += dt)
             {
-                myTesla.drive(dt);
-                myPrius.drive(dt);
+                myTesla.Drive(dt);
+                myPrius.Drive(dt);
 
                 State myTeslaState = myTesla.getState();
                 State myPriusState = myPrius.getState();
@@ -51,9 +52,13 @@ namespace CarSimulator
                     {
                         Console.WriteLine("My Prius won the race with a time of {0}, beating my Tesla which had a time of {1}", finishTimePrius, finishTimeTesla);
                     }
-                    else
+                    else if (finishTimePrius > finishTimeTesla)
                     {
                         Console.WriteLine("My Tesla won the race with a time of {0}, beating my Prius which had a time of {1}", finishTimeTesla, finishTimePrius);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Both cars tied with a time of {0}", finishTimeTesla);
                     }
                     break;
                 }

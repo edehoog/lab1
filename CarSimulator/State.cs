@@ -3,14 +3,13 @@ namespace CarSimulator
 {
     public class State
     {
+        // state variables
         public double position;
         public double velocity;
         public double accelation;
         public double time;
 
-        //implement methods like set, constructors (if applicable)
-
-        //constructor that initializes everything in the stat to zero
+        // constructor that initializes everything in the stat to zero
         public State()
         {
             position = 0;
@@ -19,7 +18,7 @@ namespace CarSimulator
             time = 0;
         }
 
-        //constructor that allows user initialization
+        // constructor that allows user initialization
         public State(double pos, double vel, double acc, double t)
         {
             position = pos;
@@ -28,7 +27,8 @@ namespace CarSimulator
             time = t;
         }
 
-        //allows the user to modify the state values
+        // REQUIRES: pos, vel, acc, t is of type double
+        // EFFECTS: no return, but sets the state of object
         public void Set(double pos, double vel, double acc, double t)
         {
             position = pos;
