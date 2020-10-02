@@ -1,3 +1,6 @@
+Name: Elija de Hoog
+Student Number: 37121209
+
 ---
 layout: lab
 title:  Lab 1 - C# Review
